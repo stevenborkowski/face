@@ -92,7 +92,7 @@ int Face_predict(const char * inputimage)
 
     string result_message = format("Predicted class = %d. Confidence = %f", predictedLabel,confidence);
     cout << result_message << endl;
-    if(confidence <= 1750){ // may need to edit depending on number of samples used
+    if(confidence <= 2000){ // may need to edit depending on number of samples used
         return 1;
     }else{
         return 0;
