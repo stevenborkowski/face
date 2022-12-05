@@ -1,6 +1,8 @@
 #include "face.hpp"
 #define FILEPATH "/mnt/remote/face/"
 
+// code taken from https://docs.opencv.org/4.x/da/d60/tutorial_face_main.html
+
 static vector<Mat> images;
 static vector<int> labels;
 static Ptr<EigenFaceRecognizer> model;
@@ -76,6 +78,10 @@ int Face_predict(const char * inputimage)
     cvtColor(testSample,grey,COLOR_BGR2GRAY);
     vector<Rect> faces;
     detector.detectMultiScale(grey,faces);
+    if(faces.size() == 0){
+        printf("No face detected\n");
+        return 0;
+    }
     Rect roi; // region of interest
     roi.x = faces[0].x;
     roi.y = faces[0].y;
